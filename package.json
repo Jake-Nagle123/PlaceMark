@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/Jake-Nagle123/PlaceMark/issues"
   },
-  "homepage": "https://github.com/Jake-Nagle123/PlaceMark#readme"
+  "homepage": "https://github.com/Jake-Nagle123/PlaceMark#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
+    "prettier": "^3.5.3"
+  }
 }
