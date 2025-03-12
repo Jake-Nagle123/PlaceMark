@@ -4,7 +4,7 @@ let events = [];
 
 export const eventMemStore = {
   async getAllEvents() {
-    return stadiums;
+    return events;
   },
 
   async addEvent(event) {
