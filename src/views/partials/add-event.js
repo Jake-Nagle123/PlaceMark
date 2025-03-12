@@ -1,4 +1,4 @@
-<form action="/dashboard/addstadium" method="POST">
+<form action="/dashboard/addevent" method="POST">
   <div class="field">
     <label class="label">Event Title</label> <input class="input" type="text" placeholder="Enter event name" name="event"/>
   </div>
