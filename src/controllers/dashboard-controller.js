@@ -25,4 +25,13 @@ export const dashboardController = {
       return h.redirect("/dashboard");
     },
   },
+
+  deleteEvent: {
+    handler: async function (request, h) {
+      const event = await db.eventStore.getEventById(request.params.id);
+      await db.eventStore.deleteEventById(event._id);
+      return h.redirect("/dashboard");
+    },
+  },
+
 };

@@ -25,4 +25,13 @@ export const eventController = {
       return h.redirect(`/event/${event._id}`);
     },
   },
+
+  deleteStadium: {
+    handler: async function(request, h) {
+      const event = await db.eventStore.getEventById(request.params.id);
+      await db.stadiumStore.deleteStadium(request.params.stadiumid);
+      return h.redirect(`/event/${event._id}`);
+    },
+  },
+
 };

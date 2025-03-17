@@ -18,4 +18,7 @@ export const webRoutes = [
 
   { method: "GET", path: "/event/{id}", config: eventController.index },
   { method: "POST", path: "/event/{id}/addstadium", config: eventController.addStadium },
+
+  { method: "GET", path: "/dashboard/deleteevent/{id}", config: dashboardController.deleteEvent },
+  { method: "GET", path: "/event/{id}/deletestadium/{stadiumid}", config: eventController.deleteStadium },
 ];
