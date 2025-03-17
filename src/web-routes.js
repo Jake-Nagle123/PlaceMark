@@ -1,6 +1,7 @@
 import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
+import { eventController } from "./controllers/event-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -14,4 +15,7 @@ export const webRoutes = [
   { method: "POST", path: "/dashboard/addevent", config: dashboardController.addEvent },
 
   { method: "GET", path: "/about", config: aboutController.index },
+
+  { method: "GET", path: "/event/{id}", config: eventController.index },
+  { method: "POST", path: "/event/{id}/addstadium", config: eventController.addStadium },
 ];
