@@ -1,0 +1,24 @@
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Stadium</th>
+      <th>Competition</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each event.stadiums}}
+      <tr>
+        <td>
+          {{stadium}}
+        </td>
+        <td>
+          {{competition}}
+        </td>
+        <td>
+          {{rating}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
