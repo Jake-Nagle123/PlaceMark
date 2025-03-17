@@ -18,6 +18,7 @@ export const eventController = {
       const newStadium = {
         stadium: request.payload.stadium,
         competition: request.payload.competition,
+        city: request.payload.city,
         rating: Number(request.payload.rating),
       };
       await db.stadiumStore.addStadium(event._id, newStadium);
