@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import { stadiumMemStore } from "./stadium-mem-store";
+import { stadiumMemStore } from "./stadium-mem-store.js";
 
 let events = [];
 
