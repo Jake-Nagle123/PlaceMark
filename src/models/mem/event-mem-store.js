@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+import { stadiumMemStore } from "./stadium-mem-store";
 
 let events = [];
 
@@ -14,7 +15,9 @@ export const eventMemStore = {
   },
 
   async getEventById(id) {
-    return events.find((event) => event._id === id);
+    const list = events.find((event) => event._id === id);
+    list.stadiums = await stadiumMemStore.getStadiumsByEventId(list._id);
+    return list;
   },
 
   async deleteEventById(id) {
