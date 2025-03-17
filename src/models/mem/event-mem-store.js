@@ -20,6 +20,10 @@ export const eventMemStore = {
     return list;
   },
 
+  async getUserEvents(userid) {
+    return events.filter((event) => event.userid === userid);
+  },
+
   async deleteEventById(id) {
     const index = events.findIndex((event) => event._id === id);
     events.splice(index, 1);
