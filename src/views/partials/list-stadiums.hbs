@@ -3,8 +3,10 @@
     <tr>
       <th>Stadium</th>
       <th>Competition</th>
-      <th>City</th>
       <th>Rating</th>
+      <th>City</th>
+      <th>Latitude</th>
+      <th>Longitude</th>      
     </tr>
   </thead>
   <tbody>
@@ -17,10 +19,16 @@
           {{competition}}
         </td>
         <td>
+          {{rating}}
+        </td>
+        <td>
           {{city}}
         </td>
         <td>
-          {{rating}}
+          {{Latitude}}
+        </td>
+        <td>
+          {{Longitude}}
         </td>
         <td>
           <a href="/event/{{../event._id}}/deletestadium/{{_id}}" class="ui icon button">

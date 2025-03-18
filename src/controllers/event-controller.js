@@ -18,8 +18,10 @@ export const eventController = {
       const newStadium = {
         stadium: request.payload.stadium,
         competition: request.payload.competition,
-        city: request.payload.city,
         rating: Number(request.payload.rating),
+        city: request.payload.city,
+        latitude: Number(request.payload.latitude),
+        longitude: Number(request.payload.longitude),
       };
       await db.stadiumStore.addStadium(event._id, newStadium);
       return h.redirect(`/event/${event._id}`);
