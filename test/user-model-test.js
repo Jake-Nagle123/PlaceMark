@@ -53,5 +53,15 @@ suite("User API tests", () => {
     assert.isNull(noUserWithEmail);
   });
 
+  test("get a user - bad params", async () => {
+    let nullUser = await db.userStore.getUserByEmail("");
+    assert.isNull(nullUser);
+    nullUser = await db.userStore.getUserById("");
+    assert.isNull(nullUser);
+    nullUser = await db.userStore.getUserById();
+    assert.isNull(nullUser);
+  });
+
+
 
 });
