@@ -30,6 +30,8 @@ suite("User API tests", () => {
     await db.userStore.deleteUserById(testUsers[0]._id);
     const returnedUsers = await db.userStore.getAllUsers();
     assert.equal(returnedUsers.length, testUsers.length - 1);
+    const deletedUser = await db.userStore.getUserById(testUsers[0]._id);
+    assert.isNull(deletedUser);
   });
 
   test("delete all users", async () => {
