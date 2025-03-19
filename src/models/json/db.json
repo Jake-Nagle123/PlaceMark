@@ -1,5 +1,27 @@
 {
-  "users": [],
+  "users": [
+    {
+      "firstName": "Dwight",
+      "lastName": "Schrute",
+      "email": "dwight@schrute.com",
+      "password": "office",
+      "_id": "b11accfe-c69e-4370-838f-242e59902003"
+    },
+    {
+      "firstName": "Pam",
+      "lastName": "Beesly",
+      "email": "pam@beesly.com",
+      "password": "office",
+      "_id": "388b2c63-eff3-47bf-9acb-059be35056e5"
+    },
+    {
+      "firstName": "Jim",
+      "lastName": "Halpert",
+      "email": "jim@halpert.com",
+      "password": "office",
+      "_id": "6b48e567-42fb-4a85-9aef-8bf6a142cc06"
+    }
+  ],
   "events": [
     {
       "userid": "abaa4dfc-cf65-4347-9ecf-123286d0cdad",
