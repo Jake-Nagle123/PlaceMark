@@ -2,16 +2,27 @@ import { assert } from "chai";
 import { db } from "../src/models/db.js";
 import { kevin, testUsers } from "./fixtures.js";
 
-suite("User API tests", () => {
-
+suite("User Model tests", () => {
   setup(async () => {
     db.init();
     await db.userStore.deleteAll();
+    for (let i = 0; i < testUsers.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      testUsers[i] = await db.userStore.addUser(testUsers[i]);
+    }
   });
 
   test("create a user", async () => {
     const newUser = await db.userStore.addUser(kevin);
-    assert.deepEqual(newUser, kevin);
+    assert.equal(newUser, kevin);
+  });
+
+  test("delete all users", async () => {
+    let returnedUsers = await db.userStore.getAllUsers();
+    assert.equal(returnedUsers.length, 3);
+    await db.userStore.deleteAll();
+    returnedUsers = await db.userStore.getAllUsers();
+    assert.equal(returnedUsers.length, 0);
   });
 
   test("get a user - success", async () => {
@@ -23,27 +34,11 @@ suite("User API tests", () => {
   });
 
   test("delete One User - success", async () => {
-    for (let i = 0; i < testUsers.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      testUsers[i] = await db.userStore.addUser(testUsers[i]);
-    }
     await db.userStore.deleteUserById(testUsers[0]._id);
     const returnedUsers = await db.userStore.getAllUsers();
     assert.equal(returnedUsers.length, testUsers.length - 1);
     const deletedUser = await db.userStore.getUserById(testUsers[0]._id);
     assert.isNull(deletedUser);
-  });
-
-  test("delete all users", async () => {
-    for (let i = 0; i < testUsers.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      await db.userStore.addUser(testUsers[i]);
-    }
-    let returnedUsers = await db.userStore.getAllUsers();
-    assert.equal(returnedUsers.length, 3);
-    await db.userStore.deleteAll();
-    returnedUsers = await db.userStore.getAllUsers();
-    assert.equal(returnedUsers.length, 0);
   });
 
   test("get a user - failures", async () => {
@@ -67,5 +62,4 @@ suite("User API tests", () => {
     const allUsers = await db.userStore.getAllUsers();
     assert.equal(testUsers.length, allUsers.length);
   });
-
 });
