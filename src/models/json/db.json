@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "firstName": "aa",
+      "lastName": "aa",
+      "email": "user@email.com",
+      "password": "aa",
+      "_id": "abaa4dfc-cf65-4347-9ecf-123286d0cdad"
+    }
+  ],
+  "events": [
+    {
+      "userid": "abaa4dfc-cf65-4347-9ecf-123286d0cdad",
+      "title": "11",
+      "_id": "e35aae6d-ec0a-4f8f-b74d-f7fdca2c42f7"
+    },
+    {
+      "userid": "abaa4dfc-cf65-4347-9ecf-123286d0cdad",
+      "title": "test",
+      "_id": "47b2a0d3-3326-46a7-935d-dc0d0fc2e23b"
+    }
+  ],
+  "stadiums": [
+    {
+      "stadium": "Celtic Park",
+      "competition": "aa",
+      "rating": 8,
+      "city": "Cork",
+      "latitude": 0,
+      "longitude": 0,
+      "_id": "ca0d9bee-9088-472a-b05f-bf8a8b0f0a27",
+      "eventid": "47b2a0d3-3326-46a7-935d-dc0d0fc2e23b"
+    }
+  ]
+}
