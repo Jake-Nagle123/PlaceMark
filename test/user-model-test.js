@@ -14,6 +14,14 @@ suite("User API tests", () => {
     assert.deepEqual(newUser, kevin);
   });
 
+  test("get a user - success", async () => {
+    const user = await db.userStore.addUser(kevin);
+    const returnedUser1 = await db.userStore.getUserById(user._id);
+    assert.deepEqual(user, returnedUser1);
+    const returnedUser2 = await db.userStore.getUserByEmail(user.email);
+    assert.deepEqual(user, returnedUser2);
+  });
+
   test("delete all users", async () => {
     for (let i = 0; i < testUsers.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
