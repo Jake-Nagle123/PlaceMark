@@ -1,14 +1,8 @@
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
+import { kevin } from "./fixtures.js";
 
 suite("User API tests", () => {
-
-  const kevin = {
-    firstName: "Kevin",
-    lastName: "Malone",
-    email: "kevin@malone.com",
-    password: "office",
-  };
 
   setup(async () => {
     db.init();
@@ -16,6 +10,6 @@ suite("User API tests", () => {
 
   test("create a user", async () => {
     const newUser = await db.userStore.addUser(kevin);
-    assert.deepEqual(kevin, newUser)
+    assert.deepEqual(newUser, kevin);
   });
 });
