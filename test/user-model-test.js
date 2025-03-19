@@ -62,6 +62,10 @@ suite("User API tests", () => {
     assert.isNull(nullUser);
   });
 
-
+  test("delete One User - fail", async () => {
+    await db.userStore.deleteUserById("bad-id");
+    const allUsers = await db.userStore.getAllUsers();
+    assert.equal(testUsers.length, allUsers.length);
+  });
 
 });
