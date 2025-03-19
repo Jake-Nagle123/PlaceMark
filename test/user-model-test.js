@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
-import { kevin } from "./fixtures.js";
+import { kevin, testUsers } from "./fixtures.js";
 
 suite("User API tests", () => {
 
@@ -12,4 +12,17 @@ suite("User API tests", () => {
     const newUser = await db.userStore.addUser(kevin);
     assert.deepEqual(newUser, kevin);
   });
+
+  test("delete all users", async () => {
+    for (let i = 0; i < testUsers.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      await db.userStore.addUser(testUsers[i]);
+    }
+    let returnedUsers = await db.userStore.getAllUsers();
+    assert.equal(returnedUsers.length, 3);
+    await db.userStore.deleteAll();
+    returnedUsers = await db.userStore.getAllUsers();
+    assert.equal(returnedUsers.length, 0);
+  });
+
 });
