@@ -46,4 +46,12 @@ suite("User API tests", () => {
     assert.equal(returnedUsers.length, 0);
   });
 
+  test("get a user - failures", async () => {
+    const noUserWithId = await db.userStore.getUserById("1234");
+    assert.isNull(noUserWithId);
+    const noUserWithEmail = await db.userStore.getUserByEmail("no@one.com");
+    assert.isNull(noUserWithEmail);
+  });
+
+
 });
