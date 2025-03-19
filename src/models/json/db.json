@@ -6,6 +6,20 @@
       "email": "user@email.com",
       "password": "aa",
       "_id": "abaa4dfc-cf65-4347-9ecf-123286d0cdad"
+    },
+    {
+      "firstName": "Kevin",
+      "lastName": "Malone",
+      "email": "kevin@malone.com",
+      "password": "office",
+      "_id": "2b3dfd1d-b896-4f25-86e3-fcac81ace96c"
+    },
+    {
+      "firstName": "Kevin",
+      "lastName": "Malone",
+      "email": "kevin@malone.com",
+      "password": "office",
+      "_id": "56055b08-b0f2-4d84-8f2f-a232f80896dc"
     }
   ],
   "events": [
