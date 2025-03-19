@@ -1,4 +1,5 @@
 import { db } from "../models/db.js";
+import { StadiumSpec } from "../models/joi-schemas.js";
 
 export const eventController = {
   index: {
@@ -13,6 +14,13 @@ export const eventController = {
   },
 
   addStadium: {
+    validate: {
+      payload: StadiumSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("event-view", { title: "Add stadium error", errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const event = await db.eventStore.getEventById(request.params.id);
       const newStadium = {
