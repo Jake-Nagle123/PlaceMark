@@ -4,3 +4,24 @@ export const kevin = {
   email: "kevin@malone.com",
   password: "office",
 };
+
+export const testUsers = [
+  {
+    firstName: "Dwight",
+    lastName: "Schrute",
+    email: "dwight@schrute.com",
+    password: "office",
+  },
+  {
+    firstName: "Pam",
+    lastName: "Beesly",
+    email: "pam@beesly.com",
+    password: "office",
+  },
+  {
+    firstName: "Jim",
+    lastName: "Halpert",
+    email: "jim@halpert.com",
+    password: "office",
+  },
+];
