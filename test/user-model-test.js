@@ -6,6 +6,7 @@ suite("User API tests", () => {
 
   setup(async () => {
     db.init();
+    await db.userStore.deleteAll();
   });
 
   test("create a user", async () => {

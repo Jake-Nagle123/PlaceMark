@@ -20,6 +20,27 @@
       "email": "kevin@malone.com",
       "password": "office",
       "_id": "56055b08-b0f2-4d84-8f2f-a232f80896dc"
+    },
+    {
+      "firstName": "Dwight",
+      "lastName": "Schrute",
+      "email": "dwight@schrute.com",
+      "password": "office",
+      "_id": "8003ee0a-9c11-44fe-bcab-8ff706e04fb6"
+    },
+    {
+      "firstName": "Pam",
+      "lastName": "Beesly",
+      "email": "pam@beesly.com",
+      "password": "office",
+      "_id": "924811e3-3ae1-4295-beb4-631c3c8eeeb4"
+    },
+    {
+      "firstName": "Jim",
+      "lastName": "Halpert",
+      "email": "jim@halpert.com",
+      "password": "office",
+      "_id": "878c6ae7-753a-4405-b282-6c6762c29e20"
     }
   ],
   "events": [
