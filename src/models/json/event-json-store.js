@@ -20,7 +20,7 @@ export const eventJsonStore = {
     await db.read();
     let list = db.data.events.find((event) => event._id === id);
     if (list) {
-      list.stadiums = await trackJsonStore.getStadiumsByEventId(list._id);
+      list.stadiums = await stadiumJsonStore.getStadiumsByEventId(list._id);
     } else {
       list = null;
     }
