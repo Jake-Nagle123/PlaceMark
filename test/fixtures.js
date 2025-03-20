@@ -30,7 +30,7 @@ export const game = {
   title: "Best Games"
 };
 
-export const testGames = [
+export const testEvents = [
   {
     title: "Week One"
   },
