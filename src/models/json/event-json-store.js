@@ -31,7 +31,7 @@ export const eventJsonStore = {
   async deleteEventById(id) {
     await db.read();
     const index = db.data.events.findIndex((event) => event._id === id);
-    db.data.events.splice(index, 1);
+    if (index !== -1) db.data.events.splice(index, 1);
     await db.write();
   },
 
