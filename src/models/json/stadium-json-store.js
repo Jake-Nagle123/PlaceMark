@@ -18,18 +18,35 @@ export const stadiumJsonStore = {
 
   async getStadiumsByEventId(id) {
     await db.read();
-    return db.data.stadiums.filter((stadium) => stadium.eventid === id);
+    let foundStadiums = db.data.stadiums.filter((stadium) => stadium.eventid === id);
+    if (!foundStadiums) {
+      foundStadiums = null;
+    }
+    return foundStadiums;
   },
 
   async getStadiumById(id) {
     await db.read();
-    return db.data.stadiums.find((stadium) => stadium._id === id);
+    let foundStadium = db.data.stadiums.find((stadium) => stadium._id === id);
+    if (!foundStadium) {
+      foundStadium = null;
+    }
+    return foundStadium;
+  },
+
+  async getEventStadiums(eventId) {
+    await db.read();
+    let foundStadiums = stadiums.filter((stadium) => stadium.eventid === eventId);
+    if (!foundStadiums) {
+      foundStadiums = null;
+    }
+    return foundStadiums;
   },
 
   async deleteStadium(id) {
     await db.read();
     const index = db.data.stadiums.findIndex((stadium) => stadium._id === id);
-    db.data.stadiums.splice(index, 1);
+    if (index !== -1) db.data.stadiums.splice(index, 1);
     await db.write();
   },
 
