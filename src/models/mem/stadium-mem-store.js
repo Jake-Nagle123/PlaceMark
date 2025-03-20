@@ -19,16 +19,24 @@ export const stadiumMemStore = {
   },
 
   async getStadiumById(id) {
-    return stadiums.find((stadium) => stadium._id === id);
+    let foundStadium = stadiums.find((stadium) => stadium._id === id);
+    if (!foundStadium) {
+      foundStadium = null;
+    }
+    return foundStadium;
   },
 
   async getEventStadiums(eventId) {
-    return stadiums.filter((stadium) => stadium.eventid === eventId);
+    let foundStadiums = stadiums.filter((stadium) => stadium.eventid === eventId);
+    if (!foundStadiums) {
+      foundStadiums = null;
+    }
+    return foundStadiums;
   },
 
   async deleteStadium(id) {
     const index = stadiums.findIndex((stadium) => stadium._id === id);
-    stadiums.splice(index, 1);
+    if (index !== -1) stadiums.splice(index, 1);
   },
 
   async deleteAllStadiums() {
