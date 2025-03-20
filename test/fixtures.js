@@ -25,3 +25,19 @@ export const testUsers = [
     password: "office",
   },
 ];
+
+export const game = {
+  title: "Best Games"
+};
+
+export const testGames = [
+  {
+    title: "Week One"
+  },
+  {
+    title: "Week Eight"
+  },
+  {
+    title: "Week Twenty"
+  }
+];
