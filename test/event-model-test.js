@@ -36,7 +36,7 @@ suite("Event Model tests", () => {
   test("delete One Playist - success", async () => {
     const id = testEvents[0]._id;
     await db.eventStore.deleteEventById(id);
-    const returnedEvent = await db.eventStore.getAllEvents();
+    const returnedEvents = await db.eventStore.getAllEvents();
     assert.equal(returnedEvents.length, testEvents.length - 1);
     const deletedEvent = await db.eventStore.getEventById(id);
     assert.isNull(deletedEvent);

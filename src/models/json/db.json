@@ -24,14 +24,16 @@
   ],
   "events": [
     {
-      "userid": "abaa4dfc-cf65-4347-9ecf-123286d0cdad",
-      "title": "11",
-      "_id": "e35aae6d-ec0a-4f8f-b74d-f7fdca2c42f7"
+      "title": "Week One",
+      "_id": "0fc54ccf-8d66-4358-9962-e1bc5c7c21ce"
     },
     {
-      "userid": "abaa4dfc-cf65-4347-9ecf-123286d0cdad",
-      "title": "test",
-      "_id": "47b2a0d3-3326-46a7-935d-dc0d0fc2e23b"
+      "title": "Week Eight",
+      "_id": "01eb7810-c096-4c41-b2b7-40c4b825357c"
+    },
+    {
+      "title": "Week Twenty",
+      "_id": "df09cd46-aecc-4461-a40c-75afbdb3e889"
     }
   ],
   "stadiums": [
