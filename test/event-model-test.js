@@ -1,7 +1,10 @@
+import { EventEmitter } from "events";
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
 import { testEvents, game } from "./fixtures.js";
 import { assertSubset } from "./test-utils.js";
+
+EventEmitter.setMaxListeners(25);
 
 suite("Event Model tests", () => {
 
