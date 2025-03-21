@@ -6,6 +6,7 @@ import { eventJsonStore } from "./json/event-json-store.js";
 import { stadiumJsonStore } from "./json/stadium-json-store.js";
 import { connectMongo } from "./mongo/connect.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
+import { eventMongoStore } from "./mongo/event-mongo-store.js";
 
 export const db = {
   userStore: null,
@@ -21,6 +22,7 @@ export const db = {
         break;
       case "mongo":
         this.userStore = userMongoStore;
+        this.eventStore = eventMongoStore;
         connectMongo();
         break;      
       default:
