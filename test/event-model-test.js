@@ -1,6 +1,7 @@
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
 import { testEvents, game } from "./fixtures.js";
+import { assertSubset } from "./test-utils.js";
 
 suite("Event Model tests", () => {
 
