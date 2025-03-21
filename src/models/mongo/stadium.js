@@ -3,7 +3,7 @@ import Mongoose from "mongoose";
 const { Schema } = Mongoose;
 
 const stadiumSchema = new Schema({
-  stadium: String,
+  title: String,
   competition: String,
   rating: Number,
   city: String,
