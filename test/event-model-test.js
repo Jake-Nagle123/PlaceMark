@@ -9,7 +9,7 @@ EventEmitter.setMaxListeners(25);
 suite("Event Model tests", () => {
 
   setup(async () => {
-    db.init("json");
+    db.init("mongo");
     await db.eventStore.deleteAllEvents();
     for (let i = 0; i < testEvents.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
