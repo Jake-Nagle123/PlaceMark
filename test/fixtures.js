@@ -41,3 +41,30 @@ export const testEvents = [
     title: "Week Twenty"
   }
 ];
+
+export const testStadiums = [
+  {
+    "stadium": "Anfield",
+    "competition": "Premier League",
+    "rating": 7.0,
+    "city": "Liverpool",
+    "latitude": 53.43,
+    "longitude": -2.96
+  },
+  {
+    "stadium": "Old Trafford",
+    "competition": "Premier League",
+    "rating": 6.0,
+    "city": "Manchester",
+    "latitude": 53.46,
+    "longitude": -2.29
+  },
+  {
+    "stadium": "Villa Park",
+    "competition": "FA Cup",
+    "rating": 8.5,
+    "city": "Birmingham",
+    "latitude": 52.51,
+    "longitude": -1.89
+  }
+];
