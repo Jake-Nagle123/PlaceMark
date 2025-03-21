@@ -15,7 +15,7 @@ suite("Event Model tests", () => {
 
   test("create an event", async () => {
     const event = await db.eventStore.addEvent(game);
-    assert.equal(game, event);
+    assertSubset(game, event);
     assert.isDefined(event._id);
   });
 
