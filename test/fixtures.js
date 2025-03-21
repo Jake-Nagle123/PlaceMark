@@ -26,6 +26,19 @@ export const testUsers = [
   },
 ];
 
+export const trip = {
+  title: "Match Day Favourites"
+};
+
+export const gameday = {
+  "stadium": "Gtech Community Stadium",
+  "competition": "Premier League",
+  "rating": 8.2,
+  "city": "London",
+  "latitude": 51.49,
+  "longitude": -0.29
+};
+
 export const game = {
   title: "Best Games"
 };
