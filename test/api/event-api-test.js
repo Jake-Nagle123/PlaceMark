@@ -1,10 +1,7 @@
-import { EventEmitter } from "events";
 import { assert } from "chai";
 import { eventService } from "./event-service.js";
 import { assertSubset } from "../test-utils.js";
 import { kevin, trip, testEvents } from "../fixtures";
-
-EventEmitter.setMaxListeners(25);
 
 suite("Event API tests", () => {
 
@@ -58,5 +55,5 @@ suite("Event API tests", () => {
       assert(error.response.data.message === "No Event with this id", "Incorrect Response Message");
     }
   });
-  
+
 });
