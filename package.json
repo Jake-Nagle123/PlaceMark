@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Jake-Nagle123/PlaceMark#readme",
   "devDependencies": {
+    "axios": "^1.8.4",
     "chai": "^5.2.0",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
