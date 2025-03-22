@@ -32,4 +32,25 @@ suite("User API tests", () => {
     const returnedUser = await eventService.getUser(testUsers[0]._id);
     assert.deepEqual(testUsers[0], returnedUser);
   });
+
+  test("get a user - bad id", async () => {
+    try {
+      const returnedUser = await eventService.getUser("1234");
+      assert.fail("Should not return a response");
+    } catch (error) {
+      assert(error.response.data.message === "No User with this id");
+      assert.equal(error.response.data.statusCode, 503);
+    }
+  });
+
+  test("get a user - deleted user", async () => {
+    await eventService.deleteAllUsers();
+    try {
+      const returnedUser = await eventService.getUser(testUsers[0]._id);
+      assert.fail("Should not return a response");
+    } catch (error) {
+      assert(error.response.data.message === "No User with this id");
+      assert.equal(error.response.data.statusCode, 404);
+    }
+  });
 });
