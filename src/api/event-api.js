@@ -29,6 +29,12 @@ export const eventApi = {
   deleteAll: {
     auth: false,
     handler: async function (request, h) {
+      try {
+        await db.eventStore.deleteAllEvents();
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
     },
   },
 };
