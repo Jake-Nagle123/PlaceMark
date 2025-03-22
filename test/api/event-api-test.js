@@ -2,25 +2,32 @@ import { EventEmitter } from "events";
 import { assert } from "chai";
 import { eventService } from "./event-service.js";
 import { assertSubset } from "../test-utils.js";
+import { kevin, trip, testEvents } from "../fixtures";
 
 EventEmitter.setMaxListeners(25);
 
-suite("Playlist API tests", () => {
+suite("Event API tests", () => {
+
+  let user = null;
 
   setup(async () => {
+    await eventService.deleteAllEvents();
+    await eventService.deleteAllUsers();
+    user = await eventService.createUser(kevin);
+    trip.userid = user._id;
   });
 
   teardown(async () => {});
 
-  test("create playlist", async () => {
+  test("create event", async () => {
   });
 
-  test("delete a playlist", async () => {
+  test("delete a event", async () => {
   });
 
-  test("create multiple playlists", async () => {
+  test("create multiple events", async () => {
   });
 
-  test("remove non-existant playlist", async () => {
+  test("remove non-existant event", async () => {
   });
 });
