@@ -1,4 +1,4 @@
-import { userApi } from "./api/user-api.js";
+import { userApi } from "./api/users-api";
 
 export const apiRoutes = [
   { method: "GET", path: "/api/users", config: userApi.find },
