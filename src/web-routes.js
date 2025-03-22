@@ -21,4 +21,6 @@ export const webRoutes = [
 
   { method: "GET", path: "/dashboard/deleteevent/{id}", config: dashboardController.deleteEvent },
   { method: "GET", path: "/event/{id}/deletestadium/{stadiumid}", config: eventController.deleteStadium },
+
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 ];
