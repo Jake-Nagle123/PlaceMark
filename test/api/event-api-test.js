@@ -20,6 +20,9 @@ suite("Event API tests", () => {
   teardown(async () => {});
 
   test("create event", async () => {
+    const returnedEvent = await eventService.createEvent(trip);
+    assert.isNotNull(returnedEvent);
+    assertSubset(trip, returnedEvent);
   });
 
   test("delete a event", async () => {
