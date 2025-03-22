@@ -1,7 +1,7 @@
 import { assert } from "chai";
-import { db } from "../src/models/db.js";
-import { testEvents, testStadiums, game, trip, gameday, testUsers } from "./fixtures.js";
-import { assertSubset } from "./test-utils.js";
+import { db } from "../../src/models/db.js";
+import { testEvents, testStadiums, game, trip, gameday, testUsers } from "../fixtures.js";
+import { assertSubset } from "../test-utils.js";
 
 suite("Stadium Model tests", () => {
 
