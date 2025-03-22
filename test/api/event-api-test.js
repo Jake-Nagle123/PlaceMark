@@ -38,6 +38,16 @@ suite("Event API tests", () => {
   });
 
   test("create multiple events", async () => {
+    for (let i = 0; i < testEvents.length; i += 1) {
+      testEvents[i].userid = user._id;
+      // eslint-disable-next-line no-await-in-loop
+      await eventService.createEvent(testEvents[i]);
+    }
+    let returnedLists = await eventService.getAllEvents();
+    assert.equal(returnedLists.length, testEvents.length);
+    await eventService.deleteAllEvents();
+    returnedLists = await eventService.getAllEvents();
+    assert.equal(returnedLists.length, 0);
   });
 
   test("remove non-existant event", async () => {
