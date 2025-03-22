@@ -5,6 +5,12 @@ export const eventApi = {
   find: {
     auth: false,
     handler: async function (request, h) {
+      try {
+        const events = await db.eventStore.getAllEvents();
+        return events;
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
     },
   },
 
