@@ -26,6 +26,15 @@ suite("Event API tests", () => {
   });
 
   test("delete a event", async () => {
+    const event = await eventService.createEvent(trip);
+    const response = await eventService.deleteEvent(event._id);
+    assert.equal(response.status, 204);
+    try {
+      const returnedEvent = await eventService.getEvent(event.id);
+      assert.fail("Should not return a response");
+    } catch (error) {
+      assert(error.response.data.message === "No event with this id", "Incorrect Response Message");
+    }
   });
 
   test("create multiple events", async () => {
