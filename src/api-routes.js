@@ -16,7 +16,7 @@ export const apiRoutes = [
 
   { method: "GET", path: "/api/stadiums", config: stadiumApi.find },
   { method: "GET", path: "/api/stadiums/{id}", config: stadiumApi.findOne },
-  { method: "POST", path: "/api/playlists/{id}/stadiums", config: stadiumApi.create },
+  { method: "POST", path: "/api/events/{id}/stadiums", config: stadiumApi.create },
   { method: "DELETE", path: "/api/stadiums", config: stadiumApi.deleteAll },
   { method: "DELETE", path: "/api/stadiums/{id}", config: stadiumApi.deleteOne },
 ];
