@@ -51,5 +51,12 @@ suite("Event API tests", () => {
   });
 
   test("remove non-existant event", async () => {
+    try {
+      const response = await eventService.deleteEvent("not an id");
+      assert.fail("Should not return a response");
+    } catch (error) {
+      assert(error.response.data.message === "No Event with this id", "Incorrect Response Message");
+    }
   });
+  
 });
