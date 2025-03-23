@@ -16,7 +16,7 @@ export const userApi = {
     tags: ["api"],
     description: "Get all userApi",
     notes: "Returns details of all userApi",
-    response: { Schema: UserArray }
+    response: { Schema: UserArray },
   },
 
   findOne: {
