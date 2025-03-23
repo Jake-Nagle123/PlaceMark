@@ -1,6 +1,6 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
-import { UserArray } from "../models/joi-schemas.js";
+import { UserSpec, UserArray } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 
 export const userApi = {
@@ -33,6 +33,10 @@ export const userApi = {
         return Boom.serverUnavailable("No User with this id");
       }
     },
+    tags: ["api"],
+    description: "Get a specific user",
+    notes: "Returns user details",
+    response: { schema: UserSpec, failAction: validationError },
   },
 
   create: {
