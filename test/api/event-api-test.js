@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { eventService } from "./event-service.js";
 import { assertSubset } from "../test-utils.js";
-import { kevin, trip, testEvents } from "../fixtures";
+import { kevin, trip, testEvents } from "../fixtures.js";
 
 suite("Event API tests", () => {
 
