@@ -1,5 +1,4 @@
 import Boom from "@hapi/boom";
-import { Schema } from "mongoose";
 import { db } from "../models/db.js";
 import { UserArray } from "../models/joi-schemas.js";
 
