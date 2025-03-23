@@ -1,5 +1,5 @@
 import Mongoose from "mongoose";
-import { Stadium } from "./stadium";
+import { Stadium } from "./stadium.js";
 
 export const stadiumMongoStore = {
   async getAllStadiums() {
