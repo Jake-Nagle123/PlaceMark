@@ -1,6 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { UserArray } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
 
 export const userApi = {
   find: {
@@ -16,7 +17,7 @@ export const userApi = {
     tags: ["api"],
     description: "Get all userApi",
     notes: "Returns details of all userApi",
-    response: { Schema: UserArray },
+    response: { Schema: UserArray, failAction: validationError },
   },
 
   findOne: {
