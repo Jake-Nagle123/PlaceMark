@@ -47,7 +47,7 @@ The user’s details were to be saved in a mongo database using Studio 3T and is
 ## Links
 #### Links to my project
 1. Github: https://github.com/Jake-Nagle123/PlaceMark.git
-2. Glitch: https://glitch.com/~gameday-adviser
+2. Glitch: https://gameday-adviser.glitch.me/
 3. Render: https://gameday-adviser.onrender.com
 
 #### Helpful links
