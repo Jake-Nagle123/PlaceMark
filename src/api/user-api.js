@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
+import { Schema } from "mongoose";
 import { db } from "../models/db.js";
+import { UserArray } from "../models/joi-schemas.js";
 
 export const userApi = {
   find: {
@@ -15,6 +17,7 @@ export const userApi = {
     tags: ["api"],
     description: "Get all userApi",
     notes: "Returns details of all userApi",
+    response: { Schema: UserArray }
   },
 
   findOne: {
