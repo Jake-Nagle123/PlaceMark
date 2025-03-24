@@ -5,16 +5,10 @@
       "lastName": "Malone",
       "email": "kevin@malone.com",
       "password": "office",
-      "_id": "533b4ce6-366a-4b49-b3d3-d6c200b013ac"
+      "_id": "9f70c08f-74d4-4270-be8a-fd88eb8b11b9"
     }
   ],
-  "events": [
-    {
-      "title": "Match Day Favourites",
-      "userid": "533b4ce6-366a-4b49-b3d3-d6c200b013ac",
-      "_id": "289a8fd8-fe0b-4a6a-9450-acc707a95d8b"
-    }
-  ],
+  "events": [],
   "stadiums": [
     {
       "stadium": "Anfield",

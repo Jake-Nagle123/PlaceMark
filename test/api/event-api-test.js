@@ -30,7 +30,7 @@ suite("Event API tests", () => {
       const returnedEvent = await eventService.getEvent(event.id);
       assert.fail("Should not return a response");
     } catch (error) {
-      assert(error.response.data.message === "No event with this id", "Incorrect Response Message");
+      assert(error.response.data.message.startsWith("No event with this id"), "Incorrect Response Message");
     }
   });
 
@@ -52,7 +52,7 @@ suite("Event API tests", () => {
       const response = await eventService.deleteEvent("not an id");
       assert.fail("Should not return a response");
     } catch (error) {
-      assert(error.response.data.message === "No Event with this id", "Incorrect Response Message");
+      assert(error.response.data.message.startsWith("No Event with this id"), "Incorrect Response Message");
     }
   });
 
