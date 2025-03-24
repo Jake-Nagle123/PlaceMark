@@ -1,32 +1,10 @@
 {
-  "users": [
-    {
-      "firstName": "Dwight",
-      "lastName": "Schrute",
-      "email": "dwight@schrute.com",
-      "password": "office",
-      "_id": "27689e17-3d7b-445f-9262-18a2ca8b7fc5"
-    },
-    {
-      "firstName": "Pam",
-      "lastName": "Beesly",
-      "email": "pam@beesly.com",
-      "password": "office",
-      "_id": "7c0eaabd-1bb5-4210-b468-9e41adc5f4f8"
-    },
-    {
-      "firstName": "Jim",
-      "lastName": "Halpert",
-      "email": "jim@halpert.com",
-      "password": "office",
-      "_id": "fc1a7c04-c4d1-40a2-9d75-cc0b926a46e0"
-    }
-  ],
+  "users": [],
   "events": [
     {
       "title": "Match Day Favourites",
-      "userid": "bfcd6afe-0602-4ab0-b759-e9c39398634b",
-      "_id": "0e66f59a-ad59-4972-9fd2-68a153e84947"
+      "userid": "c269fbcc-4c3b-4edc-a627-4f94fed8108b",
+      "_id": "d004c252-0deb-4a79-bda1-4952c8110689"
     }
   ],
   "stadiums": [
@@ -37,8 +15,8 @@
       "city": "Liverpool",
       "latitude": 53.43,
       "longitude": -2.96,
-      "_id": "44c76cf3-0466-4a2f-9dd8-8b2d638bac8f",
-      "eventid": "0e66f59a-ad59-4972-9fd2-68a153e84947"
+      "_id": "5b1d5962-fcdc-458a-af27-07f1f1f66150",
+      "eventid": "d004c252-0deb-4a79-bda1-4952c8110689"
     },
     {
       "stadium": "Old Trafford",
@@ -47,8 +25,8 @@
       "city": "Manchester",
       "latitude": 53.46,
       "longitude": -2.29,
-      "_id": "bdcf09cf-1ab3-4e0e-a756-75339b902766",
-      "eventid": "0e66f59a-ad59-4972-9fd2-68a153e84947"
+      "_id": "f582d6ea-3926-4e69-b6a1-79df7624c8cc",
+      "eventid": "d004c252-0deb-4a79-bda1-4952c8110689"
     },
     {
       "stadium": "Villa Park",
@@ -57,8 +35,8 @@
       "city": "Birmingham",
       "latitude": 52.51,
       "longitude": -1.89,
-      "_id": "931831bd-d1ee-4155-b5f7-67b210f15225",
-      "eventid": "0e66f59a-ad59-4972-9fd2-68a153e84947"
+      "_id": "25b7767d-db02-497b-9787-087a6186025a",
+      "eventid": "d004c252-0deb-4a79-bda1-4952c8110689"
     }
   ]
 }
