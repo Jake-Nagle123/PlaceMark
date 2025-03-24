@@ -1,5 +1,13 @@
 {
-  "users": [],
+  "users": [
+    {
+      "firstName": "Kevin",
+      "lastName": "Malone",
+      "email": "kevin@malone.com",
+      "password": "office",
+      "_id": "6980b32b-14b1-4eb9-958e-282dcbf26e3e"
+    }
+  ],
   "events": [],
   "stadiums": [
     {

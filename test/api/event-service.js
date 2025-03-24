@@ -49,4 +49,29 @@ export const eventService = {
     const res = await axios.get(`${this.eventUrl}/api/events/${id}`);
     return res.data;
   },
+
+  async getAllStadiums() {
+    const res = await axios.get(`${this.eventUrl}/api/stadiums`);
+    return res.data;
+  },
+
+  async createStadium(id, stadium) {
+    const res = await axios.post(`${this.eventUrl}/api/events/${id}/stadiums`, stadium);
+    return res.data;
+  },
+
+  async deleteAllStadiums() {
+    const res = await axios.delete(`${this.eventUrl}/api/stadiums`);
+    return res.data;
+  },
+
+  async getStadium(id) {
+    const res = await axios.get(`${this.eventUrl}/api/stadiums/${id}`);
+    return res.data;
+  },
+
+  async deleteStadium(id) {
+    const res = await axios.delete(`${this.eventUrl}/api/stadiums/${id}`);
+    return res.data;
+  },
 };
