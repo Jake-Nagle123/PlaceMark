@@ -5,30 +5,46 @@
       "lastName": "Malone",
       "email": "kevin@malone.com",
       "password": "office",
-      "_id": "6980b32b-14b1-4eb9-958e-282dcbf26e3e"
+      "_id": "533b4ce6-366a-4b49-b3d3-d6c200b013ac"
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "title": "Match Day Favourites",
+      "userid": "533b4ce6-366a-4b49-b3d3-d6c200b013ac",
+      "_id": "289a8fd8-fe0b-4a6a-9450-acc707a95d8b"
+    }
+  ],
   "stadiums": [
     {
-      "stadium": "Celtic Park",
-      "competition": "aa",
-      "rating": 8,
-      "city": "Cork",
-      "latitude": 0,
-      "longitude": 0,
-      "_id": "ca0d9bee-9088-472a-b05f-bf8a8b0f0a27",
-      "eventid": "47b2a0d3-3326-46a7-935d-dc0d0fc2e23b"
-    },
-    {
-      "stadium": "Celtic Park",
+      "stadium": "Anfield",
       "competition": "Premier League",
       "rating": 7,
-      "city": "Glasgow",
-      "latitude": 4.89,
-      "longitude": -8.9,
-      "_id": "81915120-f813-4349-ae4d-a16ab0a29fb2",
-      "eventid": "8733c2d6-939f-4fae-8592-6d0ba4f6d1dc"
+      "city": "Liverpool",
+      "latitude": 53.43,
+      "longitude": -2.96,
+      "_id": "b93b735a-4f75-45bd-be1b-f0f5b2274de3",
+      "eventid": "289a8fd8-fe0b-4a6a-9450-acc707a95d8b"
+    },
+    {
+      "stadium": "Old Trafford",
+      "competition": "Premier League",
+      "rating": 6,
+      "city": "Manchester",
+      "latitude": 53.46,
+      "longitude": -2.29,
+      "_id": "9f0c92c9-be38-4e44-bc5b-1c53a6d06a59",
+      "eventid": "289a8fd8-fe0b-4a6a-9450-acc707a95d8b"
+    },
+    {
+      "stadium": "Villa Park",
+      "competition": "FA Cup",
+      "rating": 8.5,
+      "city": "Birmingham",
+      "latitude": 52.51,
+      "longitude": -1.89,
+      "_id": "c4ea7319-1dfd-48fa-a8f3-0d159151f97a",
+      "eventid": "289a8fd8-fe0b-4a6a-9450-acc707a95d8b"
     }
   ]
 }
