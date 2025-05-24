@@ -1,10 +1,12 @@
+import { EventEmitter } from "events";
 import { assert } from "chai";
 import { eventService } from "./event-service.js";
 import { assertSubset } from "../test-utils.js";
 import { kevin, trip, testEvents } from "../fixtures.js";
 
-suite("Event API tests", () => {
+EventEmitter.setMaxListeners(25);
 
+suite("Event API tests", () => {
   let user = null;
 
   setup(async () => {
@@ -22,7 +24,7 @@ suite("Event API tests", () => {
     assertSubset(trip, returnedEvent);
   });
 
-  test("delete a event", async () => {
+  test("delete an event", async () => {
     const event = await eventService.createEvent(trip);
     const response = await eventService.deleteEvent(event._id);
     assert.equal(response.status, 204);
@@ -30,7 +32,7 @@ suite("Event API tests", () => {
       const returnedEvent = await eventService.getEvent(event.id);
       assert.fail("Should not return a response");
     } catch (error) {
-      assert(error.response.data.message.startsWith("No event with this id"), "Incorrect Response Message");
+      assert(error.response.data.message === "No event with this id", "Incorrect Response Message");
     }
   });
 
@@ -52,8 +54,7 @@ suite("Event API tests", () => {
       const response = await eventService.deleteEvent("not an id");
       assert.fail("Should not return a response");
     } catch (error) {
-      assert(error.response.data.message.startsWith("No Event with this id"), "Incorrect Response Message");
+      assert(error.response.data.message === "No Event with this id", "Incorrect Response Message");
     }
   });
-
 });
