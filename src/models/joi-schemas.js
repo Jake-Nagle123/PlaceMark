@@ -21,9 +21,20 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
-export const EventSpec = {
-  title: Joi.string().required(),
-};
+export const EventSpec = Joi.object()
+ .keys({
+  title: Joi.string().required().example("Best Games"),
+  userid: IdSpec,
+  stadiums: StadiumArraySpec,
+})
+.label("Event");
+
+export const EventSpecPlus = EventSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("EventPlus");
+
+export const EventArraySpec = Joi.array().items(EventSpecPlus).label("EventArray");
 
 export const StadiumSpec = Joi.object()
 .keys({

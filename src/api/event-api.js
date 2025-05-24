@@ -1,6 +1,7 @@
 import { Boom } from "@hapi/boom";
-import { EventSpec } from "../models/joi-schemas.js";
+import { IdSpec, EventArraySpec, EventSpec, EventSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { validationError } from "./logger.js";
 
 export const eventApi = {
   find: {
@@ -13,6 +14,10 @@ export const eventApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    response: { schema: EventArraySpec, failAction: validationError },
+    description: "Get all events",
+    notes: "Returns all events",
   },
 
   findOne: {
@@ -28,6 +33,11 @@ export const eventApi = {
         return Boom.serverUnavailable("No Event with this id");
       }
     },
+    tags: ["api"],
+    description: "Find an Event",
+    notes: "Returns an event",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: EventSpecPlus, failAction: validationError },
   },
 
   create: {
@@ -44,6 +54,11 @@ export const eventApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create an Event",
+    notes: "Returns the newly created event",
+    validate: { payload: EventSpec, failAction: validationError },
+    response: { schema: EventSpecPlus, failAction: validationError },
   },
 
   deleteOne: {
@@ -60,6 +75,9 @@ export const eventApi = {
         return Boom.serverUnavailable("No Event with this id");
       }
     },
+    tags: ["api"],
+    description: "Delete an event",
+    validate: { params: { id: IdSpec }, failAction: validationError },
   },
 
   deleteAll: {
@@ -72,5 +90,7 @@ export const eventApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all EventApi",
   },
 };
