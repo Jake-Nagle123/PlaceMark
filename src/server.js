@@ -8,26 +8,30 @@ import dotenv from "dotenv";
 import Joi from "joi";
 import Inert from "@hapi/inert";
 import HapiSwagger from "hapi-swagger";
+import jwt from "hapi-auth-jwt2";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+import { validate } from "./api/jwt-utils.js";
 import { apiRoutes } from "./api-routes.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
-//  process.exit(1);
+  process.exit(1);
 }
 
 const swaggerOptions = {
   info: {
     title: "Placemark API",
-    version: "0.7",
+    version: "2.0",
   },
 };
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+server.validator(Joi);
 
 async function init() {
   const server = Hapi.server({
@@ -35,6 +39,7 @@ async function init() {
   });
   
   await server.register(Cookie);
+  await server.register(jwt);
 
   await server.register([
     Inert,
@@ -44,8 +49,6 @@ async function init() {
       options: swaggerOptions,
     },
   ]);
-  
-  server.validator(Joi);
   
   server.views({
     engines: {
