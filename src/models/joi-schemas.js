@@ -21,15 +21,25 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
-export const StadiumSpec = {
-  stadium: Joi.string().required(),
-  competition: Joi.string().required(),
-  rating: Joi.number().allow("").optional(),
-  city: Joi.string().required(),
-  latitude: Joi.number().allow("").optional(),
-  longitude: Joi.number().allow("").optional(),
-};
-
 export const EventSpec = {
   title: Joi.string().required(),
 };
+
+export const StadiumSpec = Joi.object()
+.keys({
+  stadium: Joi.string().required().example("Gtech Community Stadium"),
+  competition: Joi.string().required().example("Premier League"),
+  rating: Joi.number().allow("").optional().example(8.2),
+  city: Joi.string().required().example("London"),
+  latitude: Joi.number().allow("").optional().example(51.49),
+  longitude: Joi.number().allow("").optional().example(-0.29),
+  eventid: IdSpec,
+})
+.label("Stadium");
+
+export const StadiumSpecPlus = StadiumSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("StadiumPlus");
+
+export const StadiumArraySpec = Joi.array().items(StadiumSpecPlus).label("StadiumArray");
