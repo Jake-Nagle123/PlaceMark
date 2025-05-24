@@ -8,6 +8,8 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/users", config: userApi.deleteAll },
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
 
+   { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
+
   { method: "POST", path: "/api/events", config: eventApi.create },
   { method: "DELETE", path: "/api/events", config: eventApi.deleteAll },
   { method: "GET", path: "/api/events", config: eventApi.find },
@@ -18,5 +20,5 @@ export const apiRoutes = [
   { method: "GET", path: "/api/stadiums/{id}", config: stadiumApi.findOne },
   { method: "POST", path: "/api/events/{id}/stadiums", config: stadiumApi.create },
   { method: "DELETE", path: "/api/stadiums", config: stadiumApi.deleteAll },
-  { method: "DELETE", path: "/api/stadiums/{id}", config: stadiumApi.deleteOne },
+  { method: "DELETE", path: "/api/stadiums/{id}", config: stadiumApi.deleteOne }, 
 ];
