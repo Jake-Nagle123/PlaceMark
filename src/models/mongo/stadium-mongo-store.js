@@ -8,7 +8,7 @@ export const stadiumMongoStore = {
   },
 
   async addStadium(eventId, stadium) {
-    stadium.stadiumid = eventId;
+    stadium.eventid = eventId;
     const newStadium = new Stadium(stadium);
     const stadiumObj = await newStadium.save();
     return this.getStadiumById(stadiumObj._id);
