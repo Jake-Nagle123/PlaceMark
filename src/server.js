@@ -31,12 +31,12 @@ const swaggerOptions = {
   },
 };
 
-server.validator(Joi);
-
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
   });
+
+  server.validator(Joi);
   
   await server.register(Cookie);
   await server.register(jwt);
