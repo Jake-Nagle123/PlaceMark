@@ -10,6 +10,9 @@ suite("Event API tests", () => {
   let user = null;
 
   setup(async () => {
+    eventService.clearAuth();
+    user = await eventService.createUser(kevin);
+    await eventService.authenticate(kevin);
     await eventService.deleteAllEvents();
     await eventService.deleteAllUsers();
     user = await eventService.createUser(kevin);
