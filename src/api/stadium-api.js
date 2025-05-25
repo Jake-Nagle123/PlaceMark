@@ -5,7 +5,9 @@ import { validationError } from "./logger.js";
 
 export const stadiumApi = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const stadiums = await db.stadiumStore.getAllStadiums();
@@ -21,7 +23,9 @@ export const stadiumApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     async handler(request) {
       try {
         const stadium = await db.stadiumStore.getStadiumById(request.params.id);
@@ -41,7 +45,9 @@ export const stadiumApi = {
   },
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const stadium = await db.stadiumStore.addStadium(request.params.id, request.payload);
@@ -61,7 +67,9 @@ export const stadiumApi = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.stadiumStore.deleteAllStadiums();
@@ -75,7 +83,9 @@ export const stadiumApi = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const stadium = await db.stadiumStore.getStadiumById(request.params.id);
