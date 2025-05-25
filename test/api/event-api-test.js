@@ -13,6 +13,7 @@ suite("Event API tests", () => {
     await eventService.deleteAllEvents();
     await eventService.deleteAllUsers();
     user = await eventService.createUser(kevin);
+    await eventService.authenticate(kevin);
     trip.userid = user._id;
   });
 
