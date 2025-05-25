@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { eventService } from "./event-service.js";
 import { assertSubset } from "../test-utils.js";
-import { kevin, testUsers } from "../fixtures.js";
+import { kevin, kevinCredentials, testUsers } from "../fixtures.js";
 import { db } from "../../src/models/db.js";
 
 const users = new Array(testUsers.length);
@@ -10,14 +10,14 @@ suite("User API tests", () => {
   setup(async () => {
     eventService.clearAuth();
     await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
     await eventService.deleteAllUsers();
     for (let i = 0; i < testUsers.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
       users[0] = await eventService.createUser(testUsers[i]);
     }
     await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
   });
   teardown(async () => {});
 
@@ -32,7 +32,7 @@ suite("User API tests", () => {
     assert.equal(returnedUsers.length, 4);
     await eventService.deleteAllUsers();
     await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
     returnedUsers = await eventService.getAllUsers();
     assert.equal(returnedUsers.length, 1);  
   });
@@ -55,7 +55,7 @@ suite("User API tests", () => {
   test("get a user - deleted user", async () => {
     await eventService.deleteAllUsers();
     await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
     try {
       const returnedUser = await eventService.getUser(users[0]._id);
       assert.fail("Should not return a response");

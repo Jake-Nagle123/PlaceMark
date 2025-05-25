@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { eventService } from "./event-service.js";
-import { kevin, trip, testEvents, testStadiums, gameday } from "../fixtures.js";
+import { kevin, kevinCredentials, trip, testEvents, testStadiums, gameday } from "../fixtures.js";
 
 suite("Stadium API tests", () => {
   let user = null;
@@ -10,12 +10,12 @@ suite("Stadium API tests", () => {
   setup(async () => {
     eventService.clearAuth();
     user = await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
     await eventService.deleteAllEvents();
     await eventService.deleteAllStadiums();
     await eventService.deleteAllUsers();    
     user = await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
     trip.userid = user._id;
     weekOne = await eventService.createEvent(trip);
   });

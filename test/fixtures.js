@@ -7,6 +7,11 @@ export const kevin = {
   password: "office",
 };
 
+export const kevinCredentials = {
+  email: "kevin@malone.com",
+  password: "office",
+}
+
 export const testUsers = [
   {
     firstName: "Dwight",

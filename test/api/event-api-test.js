@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 import { assert } from "chai";
 import { eventService } from "./event-service.js";
 import { assertSubset } from "../test-utils.js";
-import { kevin, trip, testEvents } from "../fixtures.js";
+import { kevin, kevinCredentials, trip, testEvents } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
 
@@ -12,11 +12,11 @@ suite("Event API tests", () => {
   setup(async () => {
     eventService.clearAuth();
     user = await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
     await eventService.deleteAllEvents();
     await eventService.deleteAllUsers();
     user = await eventService.createUser(kevin);
-    await eventService.authenticate(kevin);
+    await eventService.authenticate(kevinCredentials);
     trip.userid = user._id;
   });
 
