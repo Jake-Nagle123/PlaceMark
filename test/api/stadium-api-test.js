@@ -8,10 +8,14 @@ suite("Stadium API tests", () => {
   let weekOne = null;
 
   setup(async () => {
-    await eventService.deleteAllEvents();
-    await eventService.deleteAllUsers();
-    await eventService.deleteAllStadiums();
+    eventService.clearAuth();
     user = await eventService.createUser(kevin);
+    await eventService.authenticate(kevin);
+    await eventService.deleteAllEvents();
+    await eventService.deleteAllStadiums();
+    await eventService.deleteAllUsers();    
+    user = await eventService.createUser(kevin);
+    await eventService.authenticate(kevin);
     trip.userid = user._id;
     weekOne = await eventService.createEvent(trip);
   });
