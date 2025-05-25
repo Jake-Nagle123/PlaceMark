@@ -5,7 +5,9 @@ import { validationError } from "./logger.js";
 
 export const eventApi = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const events = await db.eventStore.getAllEvents();
@@ -21,7 +23,9 @@ export const eventApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     async handler(request) {
       try {
         const event = await db.eventStore.getEventById(request.params.id);
@@ -41,7 +45,9 @@ export const eventApi = {
   },
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const event = request.payload;
@@ -62,7 +68,9 @@ export const eventApi = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const event = await db.eventStore.getEventById(request.params.id);
@@ -81,7 +89,9 @@ export const eventApi = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.eventStore.deleteAllEvents();
