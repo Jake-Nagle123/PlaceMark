@@ -29,6 +29,14 @@ const swaggerOptions = {
     title: "Placemark API",
     version: "2.0",
   },
+  securityDefinitions: {
+    jwt: {
+      type: "apiKey",
+      name: "Authorization",
+      in: "header"
+    }
+  },
+  security: [{ jwt: [] }]
 };
 
 async function init() {
