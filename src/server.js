@@ -14,6 +14,7 @@ import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { validate } from "./api/jwt-utils.js";
 import { apiRoutes } from "./api-routes.js";
+import { githubRoutes } from "./auth/test.js"; // Added
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -85,9 +86,13 @@ async function init() {
   verifyOptions: { algorithms: ["HS256"] },
   });
   server.auth.default("session");
-  
+
   db.init("mongo");
   server.route(webRoutes);
+
+  // Added: (remove if needed)
+  server.route(githubRoutes);
+
   server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
