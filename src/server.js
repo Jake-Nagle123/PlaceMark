@@ -87,26 +87,26 @@ async function init() {
   server.auth.default("session");
 
   server.route({  
-  method: "GET",
-  path: "/auth/github",
-  options: {
-    auth: "github",
-    handler: (request, h) => {
-      if (request.auth.isAuthenticated) {
-        const user = request.auth.credentials.profile
-        const data = {
-          name: user.displayName,
-          username: user.username,
-          avatar: user.raw.avatar_url
+    method: "GET",
+    path: "/auth/github",
+    options: {
+      auth: "github",
+      handler: (request, h) => {
+        if (request.auth.isAuthenticated) {
+          const user = request.auth.credentials.profile
+          const data = {
+            name: user.displayName,
+            username: user.username,
+            avatar: user.raw.avatar_url
+          }
+          return h.view("authenticated", data)
         }
-        return h.view("authenticated", data)
+        return h.view("index", {
+          error: "Could not authenticate with GitHub."
+        }).code(400)
       }
-      return h.view("index", {
-        error: "Could not authenticate with GitHub."
-      }).code(400)
     }
-  }
-});
+  });
 
   db.init("mongo");
   server.route(webRoutes);
