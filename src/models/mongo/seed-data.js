@@ -20,4 +20,23 @@ export const seedData = {
       password: "office"
     }
   },
+  events: {
+    _model: "Event",
+    trip: {
+      title: "Match Day Favourites",
+      userid: "->users.jim"
+    }
+  },
+  stadiums: {
+    _model : "Stadium",
+    stadium_1 : {
+      stadium: "Anfield",
+      competition: "Premier League",
+      rating: 7.0,
+      city: "Liverpool",
+      latitude: 53.43,
+      longitude: -2.96,
+      eventid: "->events.trip"
+    },
+  }
 };
