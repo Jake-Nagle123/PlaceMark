@@ -1,5 +1,5 @@
-import Bell from "bell";
-import Cookie from "hapi-auth-cookie";
+import Bell from "@hapi/bell";
+import Cookie from "@hapi/cookie";
 
 async function register (server, options) {  
     await server.register({

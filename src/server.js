@@ -15,6 +15,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { validate } from "./api/jwt-utils.js";
 import { apiRoutes } from "./api-routes.js";
 import { githubRoutes } from "./auth/test.js"; // Added
+import { plugin as githubAuthPlugin } from "./auth/github.js"; // Added
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -49,6 +50,8 @@ async function init() {
   
   await server.register(Cookie);
   await server.register(jwt);
+
+  await server.register(githubAuthPlugin); // Added
 
   await server.register([
     Inert,
