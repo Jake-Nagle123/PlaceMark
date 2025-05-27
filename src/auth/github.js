@@ -2,13 +2,14 @@ import Bell from "@hapi/bell";
 import Cookie from "@hapi/cookie";
 
 async function register (server, options) {  
-    await server.register({
+    await server.register([
+    {
       plugin: Bell
     },
     {
       plugin: Cookie
     }
-  );
+]);
 
   /**
    * Register 'github' authentication strategy
