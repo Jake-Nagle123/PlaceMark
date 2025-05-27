@@ -48,7 +48,7 @@ async function init() {
 
   server.validator(Joi);
   
-  await server.register(Cookie);
+//  await server.register(Cookie); Not needed
   await server.register(jwt);
 
   await server.register(githubAuthPlugin); // Added

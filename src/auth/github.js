@@ -1,15 +1,12 @@
 import Bell from "@hapi/bell";
-import Cookie from "@hapi/cookie";
+// import Cookie from "@hapi/cookie";
 
 async function register (server, options) {  
-    await server.register([
+    await server.register(
     {
       plugin: Bell
     },
-    {
-      plugin: Cookie
-    }
-]);
+);
 
   /**
    * Register 'github' authentication strategy
@@ -23,6 +20,7 @@ async function register (server, options) {
   })
 
 /**
+ * NOT BEING USED -Aleady have a cookie in place
  * Register session based auth strategy to store
  * credentials received from GitHub and keep
  * the user logged in
