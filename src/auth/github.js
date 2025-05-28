@@ -25,11 +25,11 @@ async function register (server, options) {
  * credentials received from GitHub and keep
  * the user logged in
  */
-  server.auth.strategy("session", "cookie", {
-    password: "ThisIsASecretPasswordForTheAuthCookie",
-    redirectTo: "/",
-    isSecure: process.env.NODE_ENV === "production"
-  })
+//  server.auth.strategy("session", "cookie", {
+//    password: "ThisIsASecretPasswordForTheAuthCookie",
+//    redirectTo: "/",
+//    isSecure: process.env.NODE_ENV === "production"
+//  })
 
 server.log("info", "Plugin registered: bell authentication with strategy »github«")
 }
