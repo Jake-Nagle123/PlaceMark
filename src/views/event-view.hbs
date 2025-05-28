@@ -1,9 +1,14 @@
 {{> menu}}
 
-<section class="section">
-  <div class="title">
-    {{event.title}}
+<section class="section columns is-vcentered">
+  <div class="column has-text-centered">
+    <div class="title">
+      {{event.title}}
+    </div>
+    {{> list-stadiums}}
+    {{> add-stadium}}
   </div>
-  {{> list-stadiums}}
-  {{> add-stadium}}
+  <div class="column">
+    {{> playlist-image}}
+  </div>
 </section>
