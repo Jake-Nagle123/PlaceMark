@@ -1,10 +1,18 @@
 <Card title="Reviews of Stadiums">
   <table class="table is-fullwidth">
-  {{#each reviews}}
-  <div class="box">
-    <div>{{reviewText}}</div>
-    <small>Posted on: {{createdAt}}</small>
-  </div>
-  {{/each}}
+    <thead>
+      <tr>
+        <th>Review</th>
+        <th>Posted On</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each reviews}}
+      <tr>
+        <td>{{reviewText}}</td>
+        <td>{{createdAt}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
   </table>
 </Card>
