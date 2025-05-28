@@ -50,7 +50,7 @@ export const eventController = {
         return h.redirect(`/event/${event._id}`);
       } catch (err) {
         console.log(err);
-        return h.redirect(`/event/${event._id}`);
+        return h.redirect(`/event/${request.params.id}`);
       }
     },
     payload: {
