@@ -37,6 +37,17 @@ export const eventController = {
     },
   },
 
+  addReview: {
+    handler: async function (request, h) {
+      const event = await db.eventStore.getEventById(request.params.id);
+      const newReview = {
+        reviewText: request.payload.reviewText,
+      }
+      await db.reviewStore.addReview(event._id, newReview);
+      return h.redirect(`/event/${event._id}`);
+    },
+  },
+
   uploadImage: {
     handler: async function (request, h) {
       try {
