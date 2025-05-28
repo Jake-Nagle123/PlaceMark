@@ -24,5 +24,7 @@ export const webRoutes = [
 
   { method: "POST", path: "/event/{id}/uploadimage", config: eventController.uploadImage },
 
+  { method: "POST", path: "/event/{id}/addreview", config: eventController.addReview },
+
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 ];
