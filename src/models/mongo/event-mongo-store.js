@@ -30,6 +30,13 @@ export const eventMongoStore = {
     return event;
   },
 
+  async updateEvent(updatedEvent) {
+    const event = await Event.findOne({ _id: updatedEvent._id });
+    event.title = updatedEvent.title;
+    event.img = updatedEvent.img;
+    await event.save();
+  },
+
   async deleteEventById(id) {
     try {
       await Event.deleteOne({ _id: id });
