@@ -39,7 +39,7 @@ export const stadiumMongoStore = {
     await Stadium.deleteMany({});
   },
 
-  async updateTrack(stadium, updatedStadium) {
+  async updateStadium(stadium, updatedStadium) {
     const stadiumDoc = await Stadium.findOne({ _id: stadium._id });
     stadiumDoc.stadium = updatedStadium.stadium;
     stadiumDoc.competition = updatedStadium.competition;
