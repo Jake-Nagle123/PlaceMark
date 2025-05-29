@@ -18,8 +18,9 @@ export const eventController = {
     validate: {
       payload: StadiumSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("event-view", { title: "Add stadium error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const event = await db.eventStore.getEventById(request.params.id);
+        return h.view("event-view", { title: "Add stadium error", event: event, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -41,8 +42,9 @@ export const eventController = {
     validate: {
       payload: ReviewSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("event-view", { title: "Add review error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const event = await db.eventStore.getEventById(request.params.id);
+        return h.view("event-view", { title: "Add review error", event: event, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
