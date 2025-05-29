@@ -1,6 +1,7 @@
 import Mongoose from "mongoose";
 import { Event } from "./event.js";
 import { stadiumMongoStore } from "./stadium-mongo-store.js";
+import { reviewMongoStore } from "./review-mongo-store.js";
 
 export const eventMongoStore = {
   async getAllEvents() {
@@ -13,6 +14,7 @@ export const eventMongoStore = {
       const event = await Event.findOne({ _id: id }).lean();
       if (event) {
         event.stadiums = await stadiumMongoStore.getStadiumsByEventId(event._id);
+        event.reviews = await reviewMongoStore.getReviewsByEventId(event._id);
       }
       return event;
     }
