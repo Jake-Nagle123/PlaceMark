@@ -42,7 +42,7 @@ export const StadiumArraySpec = Joi.array().items(StadiumSpecPlus).label("Stadiu
 
 export const reviewSpec = Joi.object()
 .keys({
-  reviewText: Joi.string().required.example("Great visit to Wembley Stadium"),
+  reviewText: Joi.string().required().example("Great visit to Wembley Stadium"),
   eventid: IdSpec,
 })
 .label("Review");
