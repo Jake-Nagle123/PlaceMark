@@ -3,6 +3,7 @@ import { StadiumSpec, ReviewSpec } from "../models/joi-schemas.js";
 import { imageStore } from "../models/image-store.js";
 
 export const eventController = {
+  // Public POIs Methods
   index: {
     handler: async function (request, h) {
       const event = await db.eventStore.getEventById(request.params.id);
@@ -89,5 +90,8 @@ export const eventController = {
       return h.redirect(`/event/${event._id}`);
     },
   },
+
+  // Private POIs Methods
+  
 
 };
