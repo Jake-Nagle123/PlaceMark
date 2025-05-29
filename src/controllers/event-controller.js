@@ -49,7 +49,7 @@ export const eventController = {
       const event = await db.eventStore.getEventById(request.params.id);
       const newReview = {
         reviewText: request.payload.reviewText,
-        createdAt: Date.now,
+        createdAt: Date.now(),
       };
       await db.reviewStore.addReview(event._id, newReview);
       return h.redirect(`/event/${event._id}`);

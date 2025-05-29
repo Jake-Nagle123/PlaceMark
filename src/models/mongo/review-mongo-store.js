@@ -14,6 +14,14 @@ export const reviewMongoStore = {
     return this.getReviewById(reviewObj._id);
   },
 
+  async getReviewById(id) {
+    if (Mongoose.isValidObjectId(id)) {
+      const review = await Review.findOne({ _id: id }).lean();
+      return review;
+    }
+    return null;
+  },
+
   async getReviewsByEventId(id) {
     const reviews = await Review.find({ eventid: id }).lean();
     return reviews;
