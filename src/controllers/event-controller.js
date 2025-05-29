@@ -90,8 +90,46 @@ export const eventController = {
       return h.redirect(`/event/${event._id}`);
     },
   },
+  
+  // Private POIs Methods
+  // --> Private Index
+  privateIndex: {    
+    handler: async function (request, h) {
+      const event = await db.eventStore.getEventById(request.params.id);
+      const viewData = {
+        title: "Event",
+        event: event,
+        user: loggedInUser,
+      };
+      return h.view("event-view", viewData);
+    },
+  },
 
   // Private POIs Methods
-  
+  // --> Private addStadium
+  privateAddStadium: {
+    validate: {
+      payload: StadiumSpec,
+      options: { abortEarly: false },
+      failAction: async function (request, h, error) {
+        const event = await db.eventStore.getEventById(request.params.id);
+        return h.view("event-view", { title: "Add stadium error", event: event, errors: error.details }).takeover().code(400);
+      },
+    },
+    handler: async function (request, h) {
+      const event = await db.eventStore.getEventById(request.params.id);
+      const newStadium = {
+        stadium: request.payload.stadium,
+        competition: request.payload.competition,
+        rating: Number(request.payload.rating),
+        city: request.payload.city,
+        latitude: Number(request.payload.latitude),
+        longitude: Number(request.payload.longitude),
+        userid: loggedInUser._id,
+      };
+      await db.stadiumStore.addStadium(event._id, newStadium);
+      return h.redirect(`/event/${event._id}`);
+    },
+  },
 
 };
