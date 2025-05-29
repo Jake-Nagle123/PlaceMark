@@ -1,5 +1,5 @@
 import { db } from "../models/db.js";
-import { StadiumSpec } from "../models/joi-schemas.js";
+import { StadiumSpec, ReviewSpec } from "../models/joi-schemas.js";
 import { imageStore } from "../models/image-store.js";
 
 export const eventController = {
@@ -38,18 +38,22 @@ export const eventController = {
   },
 
   addReview: {
+    validate: {
+      payload: ReviewSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("event-view", { title: "Add review error", errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const event = await db.eventStore.getEventById(request.params.id);
       const newReview = {
         reviewText: request.payload.reviewText,
         createdAt: Date.now,
-      }
+      };
       await db.reviewStore.addReview(event._id, newReview);
       return h.redirect(`/event/${event._id}`);
-    }, catch (err) {
-      console.log(err);
-      return h.redirect(`/event/${request.params.id}`);
-    } ,
+    },
   },
 
   uploadImage: {
