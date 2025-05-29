@@ -57,6 +57,19 @@ async function init() {
       options: swaggerOptions,
     },
   ]);
+
+  Handlebars.registerHelper("formatDate", (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleString("en-IE", {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    }).replace(/:\d\d$/, "")
+  });
   
   server.views({
     engines: {
