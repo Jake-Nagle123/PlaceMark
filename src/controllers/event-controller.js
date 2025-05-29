@@ -46,7 +46,10 @@ export const eventController = {
       }
       await db.reviewStore.addReview(event._id, newReview);
       return h.redirect(`/event/${event._id}`);
-    },
+    }, catch (err) {
+      console.log(err);
+      return h.redirect(`/event/${request.params.id}`);
+    } ,
   },
 
   uploadImage: {
