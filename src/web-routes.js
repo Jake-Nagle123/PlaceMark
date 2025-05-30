@@ -26,5 +26,9 @@ export const webRoutes = [
 
   { method: "POST", path: "/event/{id}/addreview", config: eventController.addReview },
 
-  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+  { method: "GET", path: "/privateevent/{_id}", options: { auth: "session", handler: eventController.index }  },
+  { method: "POST", path: "/dashboard/privateaddevent", options: { auth: "session", handler: eventController.privateAddEvent } },  
+  { method: "GET", path: "/dashboard/deleteprivateevent/{_id}", options: { auth: "session", handler: dashboardController.deleteEvent } },
+
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } } 
 ];
