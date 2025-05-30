@@ -20,7 +20,7 @@ export const dashboardController = {
       payload: EventSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("dashboard-view", { title: "Add Event error", errors: error.details }).takeover().code(400);
+        return h.view("dashboard-view", { title: "Add Public Event error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -28,6 +28,27 @@ export const dashboardController = {
       const newEvent = {
         userid: loggedInUser._id,
         title: request.payload.title,
+        eventType: "public",
+      };
+      await db.eventStore.addEvent(newEvent);
+      return h.redirect("/dashboard");
+    },
+  },
+
+  privateAddEvent: {
+    validate: {
+      payload: EventSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("dashboard-view", { title: "Add Private Event error", errors: error.details }).takeover().code(400);
+      },
+    },
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const newEvent = {
+        userid: loggedInUser._id,
+        title: request.payload.title,
+        eventType: "private",
       };
       await db.eventStore.addEvent(newEvent);
       return h.redirect("/dashboard");
