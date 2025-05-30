@@ -16,6 +16,7 @@ export const dashboardController = {
   },
 
   addEvent: {
+    auth: "false",
     validate: {
       payload: EventSpec,
       options: { abortEarly: false },
@@ -36,6 +37,7 @@ export const dashboardController = {
   },
 
   privateAddEvent: {
+    auth: "session",
     validate: {
       payload: EventSpec,
       options: { abortEarly: false },
