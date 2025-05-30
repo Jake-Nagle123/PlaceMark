@@ -52,6 +52,7 @@ export const EventSpec = Joi.object()
   title: Joi.string().required().example("Best Games"),
   userid: IdSpec,
   stadiums: StadiumArraySpec,
+  eventType: Joi.string().valid("public", "private"),
 })
 .label("Event");
 
