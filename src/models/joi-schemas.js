@@ -30,6 +30,7 @@ export const StadiumSpec = Joi.object()
   latitude: Joi.number().allow("").optional().example(51.49),
   longitude: Joi.number().allow("").optional().example(-0.29),
   eventid: IdSpec,
+  stadiumType: Joi.string().valid("public", "private"),
 })
 .label("Stadium");
 
