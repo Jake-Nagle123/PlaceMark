@@ -12,7 +12,7 @@ const eventSchema = new Schema({
   eventType: {
     type: String,
     enum: ["public", "private"],
-    default: "public",
+    default: "private",
   },
 });
 
