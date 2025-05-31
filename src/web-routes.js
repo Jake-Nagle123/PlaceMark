@@ -30,5 +30,7 @@ export const webRoutes = [
   { method: "POST", path: "/dashboard/privateaddevent", config: dashboardController.privateAddEvent },  
   { method: "GET", path: "/dashboard/deleteprivateevent/{id}", config: dashboardController.deletePrivateEvent },
 
+  { method: "GET", path: "/publicstadiums", config: eventController.publicStadiums },
+
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } } 
 ];
