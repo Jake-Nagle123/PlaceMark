@@ -19,6 +19,11 @@ export const stadiumMongoStore = {
     return stadiums;
   },
 
+  async getPublicStadiumsByEventId(id) {
+    const stadiums = await Stadium.find({ eventid: id, stadiumType: "public" }).lean();
+    return stadiums;
+  },
+
   async getStadiumById(id) {
     if (Mongoose.isValidObjectId(id)) {
       const stadium = await Stadium.findOne({ _id: id }).lean();
