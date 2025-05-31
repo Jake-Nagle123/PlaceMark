@@ -77,18 +77,21 @@ export const dashboardController = {
   },
 
   deletePrivateEvent: {
-      auth: "session",
-      validate: {
-      payload: IdSpec,
-      options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("dashboard-view", { title: "Delete Event error", error: error.details }).takeover().code(400);
+      auth: {
+        strategy: "session",
       },
-    },
       handler: async function (request, h) {
-      const event = await db.eventStore.getEventById(request.params.id);
+      try {
+        const event = await db.eventStore.getEventById(request.params.id);
+        if (!event) {
+          return h.view("dashboard-view", { title: "No Event with this id"}).code(404);
+      }          
       await db.eventStore.deleteEventById(event._id);
       return h.redirect("/dashboard");
+    } catch (err) {
+      console.log(err);
+      return h.view("dashboard-view", { title: "Delete Event Error" }).code(500);
+      }
     },
   },
 
