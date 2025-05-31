@@ -15,6 +15,17 @@ export const eventController = {
     },
   },
 
+  publicStadiums: {
+    handler: async function (request, h) {
+      const stadiums = await db.stadiumMongoStore.getAllPublicStadiums();
+      const viewData = {
+        title: "Public Stadiums",
+        stadiums: stadiums,
+      };
+      return h.view("publicstadium-view", viewData);
+    },
+  },
+
   addStadium: {
     validate: {
       payload: StadiumSpec,
