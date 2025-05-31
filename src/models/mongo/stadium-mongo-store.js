@@ -19,6 +19,11 @@ export const stadiumMongoStore = {
     return stadiums;
   },
 
+  async getAllPublicStadiums() {
+    const stadiums = await Stadium.find({ stadiumType: "public" }).lean();
+    return stadiums;
+  },
+
   async getPublicStadiumsByEventId(id) {
     const stadiums = await Stadium.find({ eventid: id, stadiumType: "public" }).lean();
     return stadiums;
