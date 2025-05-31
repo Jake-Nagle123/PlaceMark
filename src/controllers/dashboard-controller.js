@@ -1,5 +1,5 @@
 import { db } from "../models/db.js";
-import { EventSpec } from "../models/joi-schemas.js";
+import { IdSpec, EventSpec } from "../models/joi-schemas.js";
 
 export const dashboardController = {
   index: {
@@ -62,6 +62,13 @@ export const dashboardController = {
 
   deleteEvent: {
     auth: "session",
+    validate: {
+      payload: IdSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("dashboard-view", { title: "Delete Event error", error: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const event = await db.eventStore.getEventById(request.params.id);
       await db.eventStore.deleteEventById(event._id);
@@ -71,6 +78,13 @@ export const dashboardController = {
 
   deletePrivateEvent: {
       auth: "session",
+      validate: {
+      payload: IdSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("dashboard-view", { title: "Delete Event error", error: error.details }).takeover().code(400);
+      },
+    },
       handler: async function (request, h) {
       const event = await db.eventStore.getEventById(request.params.id);
       await db.eventStore.deleteEventById(event._id);
