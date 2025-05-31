@@ -6,17 +6,20 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const events = await db.eventStore.getUserEvents(loggedInUser._id);
+      const publicEvents = events.filter(event => event.eventType === "public");
+      const privateEvents = events.filter(event => event.eventType === "private");
       const viewData = {
         title: "Event Dashboard",
         user: loggedInUser,
-        events: events,
+        publicEvents: publicEvents,
+        privateEvents: privateEvents,
       };
       return h.view("dashboard-view", viewData);
     },
   },
 
   addEvent: {
-    auth: "false",
+    auth: "session",
     validate: {
       payload: EventSpec,
       options: { abortEarly: false },
@@ -58,7 +61,17 @@ export const dashboardController = {
   },
 
   deleteEvent: {
+    auth: "session",
     handler: async function (request, h) {
+      const event = await db.eventStore.getEventById(request.params.id);
+      await db.eventStore.deleteEventById(event._id);
+      return h.redirect("/dashboard");
+    },
+  },
+
+  deletePrivateEvent: {
+      auth: "session",
+      handler: async function (request, h) {
       const event = await db.eventStore.getEventById(request.params.id);
       await db.eventStore.deleteEventById(event._id);
       return h.redirect("/dashboard");

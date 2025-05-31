@@ -1,7 +1,7 @@
 <div class="columns">
   <div class="column">
     <div class="title">Public Events</div>
-    {{#each events}}
+    {{#each publicEvents}}
     <div class="box box-link-hover-shadow">
       <h2 class="title">
         {{title}}
@@ -19,10 +19,10 @@
   </div>
   <div class="column">
     <div class="title">Private Events</div>
-    {{#each events.private}}
+    {{#each privateEvents}}
     <div class="box box-link-hover-shadow">
       <h2 class="title">
-        {{Title}}
+        {{title}}
       </h2>
       <a href="/privateevent/{{_id}}" class="button">
         <span class="icon is-small">
