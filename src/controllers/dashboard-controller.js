@@ -79,8 +79,6 @@ export const dashboardController = {
     },
   },
 
-
-
   deletePrivateEvent: {
     auth: {
       strategy: "session",
