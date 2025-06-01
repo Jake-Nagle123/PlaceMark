@@ -17,7 +17,7 @@ export const eventController = {
 
   publicStadiums: {
     handler: async function (request, h) {
-      const stadiums = await db.stadiumMongoStore.getAllPublicStadiums();
+      const stadiums = await db.stadiumStore.getAllPublicStadiums();
       const viewData = {
         title: "Public Stadiums",
         stadiums: stadiums,
