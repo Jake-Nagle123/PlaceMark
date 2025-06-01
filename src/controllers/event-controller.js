@@ -44,6 +44,7 @@ export const eventController = {
         city: request.payload.city,
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
+        stadiumType: request.payload.stadiumType,
       };
       await db.stadiumStore.addStadium(event._id, newStadium);
       return h.redirect(`/event/${event._id}`);
