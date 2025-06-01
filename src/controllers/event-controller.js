@@ -3,18 +3,42 @@ import { StadiumSpec, ReviewSpec } from "../models/joi-schemas.js";
 import { imageStore } from "../models/image-store.js";
 
 export const eventController = {
+  // Private POIs Methods
   index: {
+    auth: {
+      strategy: "session",
+    },
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const event = await db.eventStore.getEventById(request.params.id);
+      if (!loggedInUser._id) {
+        return h.view("event-view", { title: "View event error" }).code(404);
+      }
       const viewData = {
         title: "Event",
         event: event,
+        userid: loggedInUser._id,
       };
       return h.view("event-view", viewData);
     },
   },
 
+  publicStadiums: {
+    auth: false,
+    handler: async function (request, h) {
+      const stadiums = await db.stadiumStore.getAllPublicStadiums();
+      const viewData = {
+        title: "Public Stadiums",
+        stadiums: stadiums,
+      };
+      return h.view("publicstadium-view", viewData);
+    },
+  },
+
   addStadium: {
+    auth: {
+      strategy: "session",
+    },
     validate: {
       payload: StadiumSpec,
       options: { abortEarly: false },
@@ -24,14 +48,17 @@ export const eventController = {
       },
     },
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const event = await db.eventStore.getEventById(request.params.id);
       const newStadium = {
+        user: loggedInUser,
         stadium: request.payload.stadium,
         competition: request.payload.competition,
         rating: Number(request.payload.rating),
         city: request.payload.city,
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
+        stadiumType: request.payload.stadiumType,
       };
       await db.stadiumStore.addStadium(event._id, newStadium);
       return h.redirect(`/event/${event._id}`);
@@ -89,5 +116,12 @@ export const eventController = {
       return h.redirect(`/event/${event._id}`);
     },
   },
-
+  
+  deletePublicStadium: {
+    handler: async function (request, h) {
+      await db.stadiumStore.deletePublicStadium(request.params.id);
+      return h.redirect("/publicstadiums");
+    },
+  },
+  
 };

@@ -9,6 +9,11 @@ const eventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  eventType: {
+    type: String,
+    enum: ["public", "private"],
+    default: "private",
+  },
 });
 
 export const Event = Mongoose.model("Event", eventSchema);

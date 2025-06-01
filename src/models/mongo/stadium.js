@@ -13,6 +13,11 @@ const stadiumSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Event",
   },
+  stadiumType: {
+    type: String,
+    enum: ["public", "private"],
+    default: "private",
+  },
 });
 
 export const Stadium = Mongoose.model("Stadium", stadiumSchema);

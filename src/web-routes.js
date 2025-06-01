@@ -26,5 +26,12 @@ export const webRoutes = [
 
   { method: "POST", path: "/event/{id}/addreview", config: eventController.addReview },
 
-  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+  { method: "GET", path: "/privateevent/{id}", config: eventController.index },
+  { method: "POST", path: "/dashboard/privateaddevent", config: dashboardController.privateAddEvent },  
+  { method: "GET", path: "/dashboard/deleteprivateevent/{id}", config: dashboardController.deletePrivateEvent },
+
+  { method: "GET", path: "/publicstadiums", config: eventController.publicStadiums },
+  { method: "GET", path: "/event/deletepublicstadium/{id}", config: eventController.deletePublicStadium },
+
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } } 
 ];

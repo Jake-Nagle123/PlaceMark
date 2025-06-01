@@ -1,15 +1,39 @@
-{{#each events}}
-  <div class="box box-link-hover-shadow">
-    <h2 class="title">
-      {{title}}
-    </h2>
-    <a href="/event/{{_id}}" class="button">
-      <span class="icon is-small">
-        <i class="fas fa-folder-open"></i>
-      </span>
-    </a>
-    <a href="/dashboard/deleteevent/{{_id}}" class="button">
-      <i class="fas fa-trash"></i>
-    </a>
+<div class="columns">
+  <div class="column">
+    <div class="title">Public Events</div>
+    {{#each publicEvents}}
+    <div class="box box-link-hover-shadow">
+      <h2 class="title">
+        {{title}}
+      </h2>
+      <a href="/event/{{_id}}" class="button">
+        <span class="icon is-small">
+          <i class="fas fa-folder-open"></i>
+        </span>
+      </a>
+      <a href="/dashboard/deleteevent/{{_id}}" class="button">
+        <i class="fas fa-trash"></i>
+      </a>
+    </div>
+    {{/each}}
   </div>
-{{/each}}
+  <div class="column">
+    <div class="title">Private Events</div>
+    {{#each privateEvents}}
+    <div class="box box-link-hover-shadow">
+      <h2 class="title">
+        {{title}}
+      </h2>
+      <a href="/privateevent/{{_id}}" class="button">
+        <span class="icon is-small">
+          <i class="fas fa-folder-open"></i>
+        </span>
+      </a>
+      <a href="/dashboard/deleteprivateevent/{{_id}}" class="button">
+        <i class="fas fa-trash"></i>
+      </a>
+    </div>
+  {{/each}}
+  </div>
+</div>
+
