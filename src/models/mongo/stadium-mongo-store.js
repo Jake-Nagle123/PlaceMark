@@ -29,7 +29,7 @@ export const stadiumMongoStore = {
     return stadiums;
   },
 
-  async deletePublicStadiumById(id) {
+  async deletePublicStadium(id) {
     try {
       await Stadium.deleteOne({ _id: id, stadiumType: "public" });
     } catch (error) {
