@@ -8,13 +8,13 @@ export const eventController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const event = await db.eventStore.getEventById(request.params.id);
-      if (event.userid !== loggedInUser._id) {
+      if (!loggedInUser._id) {
         return h.view("event-view", { title: "View event error" }).code(404);
       }
       const viewData = {
         title: "Event",
         event: event,
-        user: loggedInUser,
+        userid: loggedInUser._id,
       };
       return h.view("event-view", viewData);
     },
