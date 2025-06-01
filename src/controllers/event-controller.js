@@ -103,6 +103,13 @@ export const eventController = {
     },
   },
   
+  deletePublicStadium: {
+    handler: async function (request, h) {
+      await db.stadiumStore.deletePublicStadium(request.params.stadiumid);
+      return h.view("publicstadium-view", viewData);
+    },
+  },
+  
   // Private POIs Methods
   // --> Private Index
   privateIndex: {    
