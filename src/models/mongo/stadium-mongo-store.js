@@ -29,6 +29,14 @@ export const stadiumMongoStore = {
     return stadiums;
   },
 
+  async deletePublicStadiumById(id) {
+    try {
+      await Stadium.deleteOne({ _id: id, stadiumType: "public" });
+    } catch (error) {
+      console.log("bad id");
+    }
+  },
+
   async getStadiumById(id) {
     if (Mongoose.isValidObjectId(id)) {
       const stadium = await Stadium.findOne({ _id: id }).lean();

@@ -21,6 +21,11 @@ export const eventMongoStore = {
     return null;
   },
 
+  async getEventByStadiumType() {
+    const event = await Event.find({ stadiumType: "public" }).lean();
+    return event;
+  },
+
   async addEvent(event) {
     const newEvent = new Event(event);
     const eventObj = await newEvent.save();
