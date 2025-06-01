@@ -1,0 +1,41 @@
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Stadium</th>
+      <th>Competition</th>
+      <th>Rating</th>
+      <th>City</th>
+      <th>Latitude</th>
+      <th>Longitude</th>      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each stadiums}}
+      <tr>
+        <td>
+          {{stadium}}
+        </td>
+        <td>
+          {{competition}}
+        </td>
+        <td>
+          {{rating}}
+        </td>
+        <td>
+          {{city}}
+        </td>
+        <td>
+          {{latitude}}
+        </td>
+        <td>
+          {{longitude}}
+        </td>
+        <td>
+          <a href="/event/deletepublicstadium/{{_id}}" class="ui icon button">
+            <i class="fas fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
