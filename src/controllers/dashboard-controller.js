@@ -1,5 +1,5 @@
 import { db } from "../models/db.js";
-import { IdSpec, EventSpec } from "../models/joi-schemas.js";
+import { EventSpec } from "../models/joi-schemas.js";
 
 export const dashboardController = {
   index: {

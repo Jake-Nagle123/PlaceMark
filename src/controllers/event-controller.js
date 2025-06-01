@@ -3,13 +3,18 @@ import { StadiumSpec, ReviewSpec } from "../models/joi-schemas.js";
 import { imageStore } from "../models/image-store.js";
 
 export const eventController = {
-  // Public POIs Methods
+  // Private POIs Methods
   index: {
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const event = await db.eventStore.getEventById(request.params.id);
+      if (event.userid !== loggedInUser._id) {
+        return h.view("event-view", { title: "View event error" }).code(404);
+      }
       const viewData = {
         title: "Event",
         event: event,
+        user: loggedInUser,
       };
       return h.view("event-view", viewData);
     },
@@ -27,6 +32,9 @@ export const eventController = {
   },
 
   addStadium: {
+    auth: {
+      strategy: "session",
+    },
     validate: {
       payload: StadiumSpec,
       options: { abortEarly: false },
@@ -36,8 +44,10 @@ export const eventController = {
       },
     },
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const event = await db.eventStore.getEventById(request.params.id);
       const newStadium = {
+        user: loggedInUser,
         stadium: request.payload.stadium,
         competition: request.payload.competition,
         rating: Number(request.payload.rating),
