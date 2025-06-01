@@ -5,6 +5,9 @@ import { imageStore } from "../models/image-store.js";
 export const eventController = {
   // Private POIs Methods
   index: {
+    auth: {
+      strategy: "session",
+    },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const event = await db.eventStore.getEventById(request.params.id);
@@ -21,6 +24,7 @@ export const eventController = {
   },
 
   publicStadiums: {
+    auth: false,
     handler: async function (request, h) {
       const stadiums = await db.stadiumStore.getAllPublicStadiums();
       const viewData = {
