@@ -105,7 +105,7 @@ export const eventController = {
   
   deletePublicStadium: {
     handler: async function (request, h) {
-      await db.stadiumStore.deletePublicStadium(request.params.stadiumid);
+      await db.stadiumStore.deletePublicStadium(request.params.id);
       return h.redirect("/publicstadiums");
     },
   },
